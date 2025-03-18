@@ -1,28 +1,31 @@
 @extends('base')
+
 @section('title', 'Login')
-<div class="centered-div">
+
+@section('content')
+<div class="d-flex justify-content-center align-items-center vh-100">
     <div class="container">
-        <div class="col" style="width: 100vh;">
+        <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 style="float: left;"><strong>Login</strong></h4>
+                <div class="card shadow-lg">
+                    <div class="card-header text-center">
+                        <h4><strong>Login</strong></h4>
                     </div>
 
                     @if(Session("success"))
-                    <span class="alert alert-success">
+                    <div class="alert alert-success text-center">
                         {{ session('success') }}
-                    </span>
+                    </div>
                     @endif
 
                     @if(Session("fail"))
-                    <span class="alert alert-danger">
+                    <div class="alert alert-danger text-center">
                         {{ session('fail') }}
-                    </span>
+                    </div>
                     @endif
 
                     <div class="card-body">
-                        <form method="post" action="{{ route('auth.login')}}">
+                        <form method="post" action="{{ route('auth.login') }}">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Email Address</label>
@@ -33,18 +36,23 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="text" class="form-control" id="password" name="password" value="{{ old('password') }}" placeholder="Enter password">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                                 @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
                         </form>
 
-                        <a href="{{ route('auth.register') }}">Register</a>
+                        <div class="text-center mt-3">
+                            <a href="{{ route('auth.register') }}">Don't have an account? Register</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection

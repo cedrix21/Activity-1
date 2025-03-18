@@ -3,6 +3,7 @@
 
 @section('content')
 <div class="container mt-4">
+
     @if (session('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
@@ -140,7 +141,7 @@
                                 <option value="female">Female</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Add Student</button>
                     </form>
                 </div>
             </div>
